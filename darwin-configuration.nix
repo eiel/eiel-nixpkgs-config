@@ -7,6 +7,7 @@
     [ 
       pkgs.vim
       pkgs.git
+      pkgs.gh
     ];
 
   # Use a custom configuration.nix location.

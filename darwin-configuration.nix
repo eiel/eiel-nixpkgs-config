@@ -23,9 +23,11 @@
   programs.fish.enable = true;
 
   homebrew.enable = true;
+  homebrew.taps = ["homebrew/cask-versions"];
   homebrew.casks = [
       "1password"
       "karabiner-elements"
+      "firefox-beta"
     ];
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 12;

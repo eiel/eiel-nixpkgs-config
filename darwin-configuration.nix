@@ -28,6 +28,7 @@
       "1password"
       "karabiner-elements"
       "firefox-beta"
+      "google-chrome-beta"
     ];
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 12;

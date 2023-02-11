@@ -1,14 +1,20 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ <home-manager/nix-darwin> ];
+  users.users.eiel = {
+    name = "eiel";
+    home = "/Users/eiel";
+  };
+  home-manager.users.eiel = { pkgs, ... }: {
+    home.packages = [ pkgs.vim pkgs.git pkgs.gh ];
+    programs.fish.enable = true;
+    home.stateVersion = "23.05";
+  };
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ 
-      pkgs.vim
-      pkgs.git
-      pkgs.gh
-    ];
+  environment.systemPackages = [];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -20,7 +26,7 @@
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
-  programs.fish.enable = true;
+  # programs.fish.enable = true;  # default shell on catalina
 
   homebrew.enable = true;
   homebrew.taps = ["homebrew/cask-versions"];

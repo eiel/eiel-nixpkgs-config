@@ -9,6 +9,12 @@
   home-manager.users.eiel = { pkgs, ... }: {
     home.packages = [ pkgs.vim pkgs.git pkgs.gh pkgs.ghq ];
     programs.fish.enable = true;
+    programs.direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
     programs.emacs = {
       enable = true;
       extraPackages = epkgs: [ epkgs.magit epkgs.nix-mode ];

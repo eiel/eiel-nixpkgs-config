@@ -28,18 +28,22 @@
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
+  nix.settings = {
+    extra-experimental-features = [ "nix-command" "flakes" ];
+  };
+
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;  # default shell on catalina
 
   homebrew.enable = true;
-  homebrew.taps = ["homebrew/cask-versions"];
+  homebrew.taps = [ "homebrew/cask-versions" ];
   homebrew.casks = [
-      "1password"
-      "karabiner-elements"
-      "firefox-beta"
-      "google-chrome-beta"
-    ];
+    "1password"
+    "karabiner-elements"
+    "firefox-beta"
+    "google-chrome-beta"
+  ];
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 12;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;

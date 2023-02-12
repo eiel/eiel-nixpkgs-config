@@ -9,6 +9,10 @@
   home-manager.users.eiel = { pkgs, ... }: {
     home.packages = [ pkgs.vim pkgs.git pkgs.gh ];
     programs.fish.enable = true;
+    programs.emacs = {
+      enable = true;
+      extraPackages = epkgs: [ epkgs.magit epkgs.nix-mode ];
+    };
     home.stateVersion = "23.05";
   };
 

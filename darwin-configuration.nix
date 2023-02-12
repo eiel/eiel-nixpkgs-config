@@ -7,7 +7,7 @@
     home = "/Users/eiel";
   };
   home-manager.users.eiel = { pkgs, ... }: {
-    home.packages = [ pkgs.vim pkgs.git pkgs.gh ];
+    home.packages = [ pkgs.vim pkgs.git pkgs.gh pkgs.ghq ];
     programs.fish.enable = true;
     programs.emacs = {
       enable = true;

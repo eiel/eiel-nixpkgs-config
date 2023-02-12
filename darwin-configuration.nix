@@ -19,11 +19,16 @@
       enable = true;
       extraPackages = epkgs: [ epkgs.magit epkgs.nix-mode ];
     };
-    programs.git.ignores =
-      let
-        direnv = [ ".envrc" ".direnv" ];
-      in
-      direnv;
+    programs.git = {
+      enable = true;
+      userEmail = "eiel.hal@gmail.com";
+      userName = "HIMURA Tomohiko a.k.a eiel";
+      ignores =
+        let
+          direnv = [ ".envrc" ".direnv" ];
+        in
+        direnv;
+    };
     home.stateVersion = "23.05";
   };
 

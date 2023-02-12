@@ -19,6 +19,11 @@
       enable = true;
       extraPackages = epkgs: [ epkgs.magit epkgs.nix-mode ];
     };
+    programs.git.ignores =
+      let
+        direnv = [ ".envrc" ".direnv" ];
+      in
+      direnv;
     home.stateVersion = "23.05";
   };
 

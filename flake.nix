@@ -3,10 +3,13 @@
 
   outputs = { self, nixpkgs }:
     let
-      buildOutputs = system: {
-        packages."${system}".default = self.packages."${system}".hello;
-        formatter."${system}" = nixpkgs.legacyPackages.x86_64-darwin.nixpkgs-fmt;
-      };
+      supportedSystems = [ "x86_64-darwin" "aarch64-darwin" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      systemPackages = system: nixpkgs.legacyPackages."${system}";
+      selectDerivationAllSupportedSystems = selector: forAllSystems (system: selector (systemPackages system));
     in
-    nixpkgs.lib.recursiveUpdate (buildOutputs "x86_64-darwin") (buildOutputs "aarch64-darwin");
+    {
+      packages = selectDerivationAllSupportedSystems (pkgs: { default = pkgs.hello; });
+      formatter = selectDerivationAllSupportedSystems (pkgs: pkgs.nixpkgs-fmt);
+    };
 }

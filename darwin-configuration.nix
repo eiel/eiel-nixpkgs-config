@@ -11,7 +11,7 @@ in {
       };
     };
   home-manager.users."${user.name}" = { pkgs, ... }: {
-    home.packages = [ pkgs.vim pkgs.git pkgs.gh ];
+    home.packages = [ pkgs.vim pkgs.git pkgs.gh pkgs.tig pkgs.tree ];
     programs.fish.enable = true;
     programs.emacs = {
       enable = true;

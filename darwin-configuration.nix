@@ -1,13 +1,17 @@
 { config, pkgs, ... }:
 
-{
+let user = import ./user.nix;
+in {
   imports = [ <home-manager/nix-darwin> ];
-  users.users.eiel = {
-    name = "eiel";
-    home = "/Users/eiel";
-  };
-  home-manager.users.eiel = { pkgs, ... }: {
-    home.packages = [ pkgs.vim pkgs.git pkgs.gh pkgs.ghq ];
+  users.users =
+    {
+      "${user.name}" = {
+        name = user.name;
+        home = "/Users/${user.name}";
+      };
+    };
+  home-manager.users."${user.name}" = { pkgs, ... }: {
+    home.packages = [ pkgs.vim pkgs.git pkgs.gh pkgs.ghq pkgs.tig pkgs.tree ];
     programs.fish.enable = true;
     programs.direnv = {
       enable = true;

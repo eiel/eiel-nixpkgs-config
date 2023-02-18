@@ -3,7 +3,7 @@
 let user = import ./user.nix;
 in {
   imports = [ <home-manager/nix-darwin> ];
-  users.users = 
+  users.users =
     {
       "${user.name}" = {
         name = user.name;

@@ -48,6 +48,8 @@ in {
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   nix.settings = {
     extra-experimental-features = [ "nix-command" "flakes" ];
   };

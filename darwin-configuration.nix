@@ -11,7 +11,28 @@ in {
       };
     };
   home-manager.users."${user.name}" = { pkgs, ... }: {
-    home.packages = [ pkgs.vim pkgs.git pkgs.gh pkgs.ghq pkgs.tig pkgs.tree ];
+    home.packages = [
+      pkgs.aspell
+      pkgs.aspellDicts.en
+      pkgs.aspellDicts.en-computers
+      pkgs.cloc
+      pkgs.coreutils
+      pkgs.delta
+      pkgs.diffr
+      pkgs.fd
+      pkgs.gh
+      pkgs.ghq
+      pkgs.git
+      pkgs.gron
+      pkgs.jq
+      pkgs.lsd
+      pkgs.peco
+      pkgs.ripgrep
+      pkgs.xh
+      pkgs.tig
+      pkgs.tree
+      pkgs.vim
+    ];
     programs.fish.enable = true;
     programs.direnv = {
       enable = true;

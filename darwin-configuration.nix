@@ -17,6 +17,7 @@ in {
       pkgs.aspell
       pkgs.aspellDicts.en
       pkgs.aspellDicts.en-computers
+      pkgs.cachix
       pkgs.cloc
       pkgs.coreutils
       pkgs.delta
@@ -44,7 +45,12 @@ in {
     };
     programs.emacs = {
       enable = true;
-      extraPackages = epkgs: [epkgs.magit epkgs.nix-mode];
+      extraPackages = epkgs: [
+        epkgs.forge
+        epkgs.nix-mode
+        epkgs.magit
+        epkgs.vertico
+      ];
     };
     programs.git = {
       enable = true;

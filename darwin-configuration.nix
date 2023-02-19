@@ -1,16 +1,18 @@
-{ config, pkgs, ... }:
-
-let user = import ./user.nix;
+{
+  config,
+  pkgs,
+  ...
+}: let
+  user = import ./user.nix;
 in {
-  imports = [ <home-manager/nix-darwin> ];
-  users.users =
-    {
-      "${user.name}" = {
-        name = user.name;
-        home = "/Users/${user.name}";
-      };
+  imports = [<home-manager/nix-darwin>];
+  users.users = {
+    "${user.name}" = {
+      name = user.name;
+      home = "/Users/${user.name}";
     };
-  home-manager.users."${user.name}" = { pkgs, ... }: {
+  };
+  home-manager.users."${user.name}" = {pkgs, ...}: {
     home.packages = [
       pkgs.aspell
       pkgs.aspellDicts.en
@@ -42,16 +44,15 @@ in {
     };
     programs.emacs = {
       enable = true;
-      extraPackages = epkgs: [ epkgs.magit epkgs.nix-mode ];
+      extraPackages = epkgs: [epkgs.magit epkgs.nix-mode];
     };
     programs.git = {
       enable = true;
       userEmail = "eiel.hal@gmail.com";
       userName = "HIMURA Tomohiko a.k.a eiel";
-      ignores =
-        let
-          direnv = [ ".envrc" ".direnv" ];
-        in
+      ignores = let
+        direnv = [".envrc" ".direnv"];
+      in
         direnv;
     };
     home.stateVersion = "23.05";
@@ -59,7 +60,7 @@ in {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [ ];
+  environment.systemPackages = [];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -72,7 +73,7 @@ in {
   security.pam.enableSudoTouchIdAuth = true;
 
   nix.settings = {
-    extra-experimental-features = [ "nix-command" "flakes" ];
+    extra-experimental-features = ["nix-command" "flakes"];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -80,7 +81,7 @@ in {
   # programs.fish.enable = true;  # default shell on catalina
 
   homebrew.enable = true;
-  homebrew.taps = [ "homebrew/cask-versions" ];
+  homebrew.taps = ["homebrew/cask-versions"];
   homebrew.casks = [
     "1password"
     "karabiner-elements"

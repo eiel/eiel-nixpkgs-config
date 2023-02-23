@@ -49,8 +49,16 @@ in {
         epkgs.forge
         epkgs.nix-mode
         epkgs.magit
+        epkgs.orderless
         epkgs.vertico
       ];
+      extraConfig = ''
+        (vertico-mode)
+
+        (setq completion-styles '(orderless basic)
+              completion-category-defaults nil
+              completion-category-overrides '((file (styles partial-completion))))
+      '';
     };
     programs.git = {
       enable = true;

@@ -101,6 +101,7 @@ in {
     "karabiner-elements"
     "firefox-beta"
     "google-chrome-beta"
+    "google-japanese-ime"
   ];
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 12;

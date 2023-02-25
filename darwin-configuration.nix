@@ -46,9 +46,11 @@ in {
     programs.emacs = {
       enable = true;
       extraPackages = epkgs: [
+        epkgs.consult
         epkgs.forge
         epkgs.nix-mode
         epkgs.magit
+        epkgs.marginalia
         epkgs.orderless
         epkgs.vertico
       ];
@@ -56,6 +58,7 @@ in {
         (vertico-mode)
 
         (setq completion-styles '(orderless basic)
+              completion-in-region-function #'consult-completion-in-region
               completion-category-defaults nil
               completion-category-overrides '((file (styles partial-completion))))
       '';

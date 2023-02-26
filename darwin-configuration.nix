@@ -69,8 +69,9 @@ in {
       userName = "HIMURA Tomohiko a.k.a eiel";
       ignores = let
         direnv = [".envrc" ".direnv"];
+        emacs = ["*~"];
       in
-        direnv;
+        direnv ++ emacs;
     };
     home.stateVersion = "23.05";
   };

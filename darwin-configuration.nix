@@ -47,6 +47,7 @@ in {
       enable = true;
       extraPackages = epkgs: [
         epkgs.consult
+        epkgs.flycheck
         epkgs.forge
         epkgs.nix-mode
         epkgs.magit

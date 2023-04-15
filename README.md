@@ -1,4 +1,4 @@
-my [nix-darwin](https://github.com/LnL7/nix-darwin) configuration.
+my [nix-darwin](https://github.com/LnL7/nix-darwin) and [home-manager](https://github.com/nix-community/home-manager) configuration.
 
 # setup
 

@@ -1,9 +1,11 @@
 #/bin/sh
 
-cat <<EOF > ~/.config/nixpkgs/darwin-configuration.nix
-import ${PDW}/darwin-configuration.nix
+mkdir -p ~/.nixpkgs
+cat <<EOF > ~/.nixpkgs/darwin-configuration.nix
+import ${PWD}/darwin-configuration.nix
 EOF
 
+mkdir -p ~/.config/home-manager
 cat <<EOF > ~/.config/home-manager/home.nix
-import ${PDW}/home-overlay.nix "$USER"
+import ${PWD}/home.nix "$USER"
 EOF

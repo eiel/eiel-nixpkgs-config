@@ -1,4 +1,4 @@
-self: {
+{
   config,
   pkgs,
   ...
@@ -13,7 +13,11 @@ self: {
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
   # nix.package = pkgs.nix;
+  nix.settings = {
+    extra-experimental-features = ["nix-command" "flakes"];
+  };
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -33,10 +37,8 @@ self: {
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 12;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
-  nix.settings = {
-    extra-experimental-features = ["nix-command" "flakes"];
-  };
 }
